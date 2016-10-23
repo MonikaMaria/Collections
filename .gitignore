@@ -1,0 +1,7 @@
+*.txt
+/*.suo
+bin
+obj
+/packages/*
+!/packages/repositories.config
+/.vs
