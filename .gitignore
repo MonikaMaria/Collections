@@ -5,3 +5,5 @@ obj
 /packages/*
 !/packages/repositories.config
 /.vs
+/OneDirectionList.cs
+/PriorityQueue.cs
