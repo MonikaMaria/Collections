@@ -247,6 +247,27 @@ namespace Collections.Tests
         }
 
         [Test]
+        public void Insert_at_first_position_more_than_two_element_list()
+        {
+            //arrange
+            var list = new OneDirectionList<string>();
+
+            //act
+            list.Add("xxx");
+            list.Add("yyy");
+            list.Add("zzz");
+
+            //assert
+            Assert.That(list.Count, Is.EqualTo(3));
+            list.Insert(0, "bbb");
+            Assert.That(list[0], Is.EqualTo("bbb"));
+            Assert.That(list[1], Is.EqualTo("xxx"));
+            Assert.That(list[2], Is.EqualTo("yyy"));
+            Assert.That(list[3], Is.EqualTo("zzz"));
+            Assert.That(list.Count, Is.EqualTo(4));
+        }
+
+        [Test]
         public void Insert_inside_list()
         {
             //arrange

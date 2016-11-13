@@ -51,8 +51,8 @@ namespace Collections
 
             var priority = innerQueue.Keys[0];
             var queue = innerQueue[priority];
-            return queue.Peek();
 
+            return queue.Peek();
         }
 
         public void Clear()

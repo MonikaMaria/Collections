@@ -58,17 +58,13 @@ namespace Collections
 
             var currentNode = head;
             int index = arrayIndex;
-            if (index == 0)
+
+            for (int i = 0; i < count; i++)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    array.SetValue(currentNode.Value, index);
-                    index++;
-                    currentNode = currentNode.Next;
-                }
+                array.SetValue(currentNode.Value, index);
+                index++;
+                currentNode = currentNode.Next;
             }
-            else
-                throw new IndexOutOfRangeException();
         }
 
         public int IndexOf(T value)
@@ -92,15 +88,6 @@ namespace Collections
         {
             if (index >= count)
                 throw new IndexOutOfRangeException();
-
-            if (head.Next == null && index == 0)
-            {
-                var temp = head;
-                head = new Node(value);
-                head.Next = temp;
-                count++;
-                return;
-            }
 
             if (index == 0)
             {
@@ -165,6 +152,7 @@ namespace Collections
                     count--;
                     return true;
                 }
+
                 if (currentNode == null)
                     throw new IndexOutOfRangeException();
 
@@ -273,6 +261,8 @@ namespace Collections
 
         public int Count => count;
 
+        #region IEnumerable implementation
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             return new OneDirectionListEnumerator(this);
@@ -282,21 +272,7 @@ namespace Collections
         {
             return ((IEnumerable<T>)this).GetEnumerator();
         }
-
-        private class Node
-        {
-            public T Value;
-            public Node Next;
-
-            public Node(T value)
-            {
-                Value = value;
-            }
-
-            public override string ToString() => Value.ToString();
-
-        }
-
+        
         private class OneDirectionListEnumerator : IEnumerator<T>
         {
             private OneDirectionList<T> list;
@@ -326,6 +302,21 @@ namespace Collections
             public void Dispose()
             {
             }
+        }
+
+        #endregion
+
+        private class Node
+        {
+            public T Value;
+            public Node Next;
+
+            public Node(T value)
+            {
+                Value = value;
+            }
+
+            public override string ToString() => Value.ToString();
         }
     }
 }
