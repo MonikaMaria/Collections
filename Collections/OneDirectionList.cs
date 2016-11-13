@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-//Training before implementing PriorityQueue.
+
+/*Training before implementing PriorityQueue.*/
 
 namespace Collections
 {
@@ -322,7 +323,9 @@ namespace Collections
 
             public T Current => currentNode.Value;
 
-            public void Dispose() => ;
+            public void Dispose()
+            {
+            }
         }
     }
 }
